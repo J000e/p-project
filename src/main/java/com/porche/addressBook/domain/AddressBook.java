@@ -1,4 +1,4 @@
-package com.porche.addressBook.domain;
+package com.porche.addressbook.domain;
 
 import java.util.List;
 

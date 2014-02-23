@@ -1,4 +1,4 @@
-package com.porche.addressBook.presentation;
+package com.porche.addressbook.presentation;
 
 public interface Input {
     String getValue();
