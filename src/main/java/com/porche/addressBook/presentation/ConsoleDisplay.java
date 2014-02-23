@@ -31,6 +31,7 @@ public class ConsoleDisplay implements Display {
                         address.getLastName(), 
                         address.getPhoneNumber()));
             }
+            System.out.println("---------------------------------\n");
         }
         
     }

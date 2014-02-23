@@ -21,6 +21,7 @@ public class FileSystemAddressBook implements AddressBook {
     private static final String FILENAME_PROPERTY = "filename";
     private static final String DEFAULT_FILENAME = "addressBook.dat";
     private File file;
+    private boolean isNewFile = false;
 
     public FileSystemAddressBook() {
         file = createIfNotExists();
@@ -31,6 +32,7 @@ public class FileSystemAddressBook implements AddressBook {
         try {
             if(!f.exists()) {
                 f.createNewFile();
+                isNewFile = true;
             }
         } catch (IOException e) {
             throw new AddressBookException("File read or write problem occured", e);
@@ -41,11 +43,13 @@ public class FileSystemAddressBook implements AddressBook {
     public void add(Address address) {
         try {
             List<Address> addresses = readAddressList();
-            OutputStream outputStream = new FileOutputStream(file, false);
             addresses.add(address);
-            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
-            oos.writeObject(addresses);
-            oos.close();
+            OutputStream outputStream = new FileOutputStream(file, false);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(addresses);
+            objectOutputStream.close();
+            outputStream.close();
+            isNewFile = false;
         } catch (FileNotFoundException e) {
             throw new AddressBookException("File cant been opened", e);
         } catch (IOException e) {
@@ -65,22 +69,12 @@ public class FileSystemAddressBook implements AddressBook {
         return found;
     }
 
+    @SuppressWarnings("unchecked")
     private List<Address> readAddressList() {
         List<Address> addressList = new ArrayList<Address>();        
         
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            addressList = (List<Address>) objectInputStream.readObject();
-            fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            throw new AddressBookException("File cant been opened", e);
-        } catch (EOFException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-                throw new AddressBookException("File read or write problem occured", e);
-        } catch (ClassNotFoundException e) {
-            throw new AddressBookException("Input file contains invalid data", e);
+        if (! isNewFile) {
+            addressList = tryToReadAddresses();
         }
         return addressList;
     }
@@ -92,6 +86,26 @@ public class FileSystemAddressBook implements AddressBook {
             fileName = propertyFileName;
         }
         return fileName;
+    }
+    
+    private List<Address> tryToReadAddresses() {
+        List<Address> addressList = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            addressList = (List<Address>) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (FileNotFoundException e) {
+            throw new AddressBookException("File cant been opened", e);
+        } catch (EOFException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new AddressBookException("File read or write problem occured", e);
+        } catch (ClassNotFoundException e) {
+            throw new AddressBookException("Input file contains invalid data", e);
+        }
+        return addressList;
     }
 
 }
