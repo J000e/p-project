@@ -5,7 +5,9 @@ import com.porche.addressBook.presentation.Display;
 import com.porche.addressBook.presentation.Handler;
 import com.porche.addressBook.presentation.Input;
 
-
+/**
+ * Handler implementation to handle the quit action.
+ */
 public class QuitApplicationHandler implements Handler {
 
     @Override

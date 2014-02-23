@@ -16,6 +16,10 @@ import com.porche.addressBook.domain.Address;
 import com.porche.addressBook.domain.AddressBook;
 import com.porche.addressBook.domain.AddressBookException;
 
+/**
+ * Implementation of {@link AddressBook}. It stores data into a file.
+ *
+ */
 public class FileSystemAddressBook implements AddressBook {
 
     private static final String FILENAME_PROPERTY = "filename";
@@ -25,19 +29,6 @@ public class FileSystemAddressBook implements AddressBook {
 
     public FileSystemAddressBook() {
         file = createIfNotExists();
-    }
-
-    private File createIfNotExists() {
-        File f = new File(setFileName());
-        try {
-            if(!f.exists()) {
-                f.createNewFile();
-                isNewFile = true;
-            }
-        } catch (IOException e) {
-            throw new AddressBookException("File read or write problem occured", e);
-        } 
-        return f;
     }
 
     public void add(Address address) {
@@ -69,7 +60,6 @@ public class FileSystemAddressBook implements AddressBook {
         return found;
     }
 
-    @SuppressWarnings("unchecked")
     private List<Address> readAddressList() {
         List<Address> addressList = new ArrayList<Address>();        
         
@@ -77,6 +67,20 @@ public class FileSystemAddressBook implements AddressBook {
             addressList = tryToReadAddresses();
         }
         return addressList;
+    }
+    
+
+    private File createIfNotExists() {
+        File f = new File(setFileName());
+        try {
+            if(!f.exists()) {
+                f.createNewFile();
+                isNewFile = true;
+            }
+        } catch (IOException e) {
+            throw new AddressBookException("File read or write problem occured", e);
+        } 
+        return f;
     }
 
     private String setFileName() {

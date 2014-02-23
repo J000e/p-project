@@ -9,7 +9,9 @@ import com.porche.addressBook.presentation.Handler;
 import com.porche.addressBook.presentation.Input;
 
 
-
+/**
+ * Handler implementation to handle the search action.
+ */
 public class SearchAddressHandler implements Handler {
 
     private String lastName;

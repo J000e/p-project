@@ -8,11 +8,22 @@ import com.porche.addressBook.domain.AddressBook;
 public class InputHandler {
     private Map<String, Handler> handlers;
     
+    /**
+     * Initialize the inputhandler object
+     * @param inputHandlerSetup have to be a map with the possible inputs and the handlers linked to them
+     */
     public InputHandler(Map<String, Handler> inputHandlerSetup) {
         handlers = new HashMap<String, Handler>();
         handlers.putAll(inputHandlerSetup);
     }
 
+    /**
+     * Executes the command according the users input
+     * @param display the display implementation used by the application
+     * @param input the input implementation used by the application
+     * @param addressBook the persistence implementation used by the application
+     * @return whether the user attempts to quit or not.
+     */
     public boolean executeCommand(Display display, Input input, AddressBook addressBook) {
         Handler handler = getHandler(display, input);
         handler.askForParameter(display, input).execute(addressBook);

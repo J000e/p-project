@@ -9,6 +9,9 @@ import com.porche.addressBook.presentation.handlers.AddAddressHandler;
 import com.porche.addressBook.presentation.handlers.QuitApplicationHandler;
 import com.porche.addressBook.presentation.handlers.SearchAddressHandler;
 
+/**
+ * The console implementation of the addressbook application.
+ */
 public class ConsoleApplication {
 
     private AddressBook addressBook;
@@ -22,11 +25,19 @@ public class ConsoleApplication {
         inputHandler = new InputHandler(getInputHandlerSetup());
     }
 
+    /**
+     * Sets up persistence.
+     * @param addressBook Persistence class. It have to implement the {@link AddressBook} interface.
+     * @return The {@link ConsoleApplication} instance itself
+     */
     public ConsoleApplication withAddressBook(AddressBook addressBook) {
         this.addressBook = addressBook;
         return this;
     }
     
+    /**
+     * Launches the application.
+     */
     public void launch() {
         validateInstanceState();
         

@@ -6,7 +6,9 @@ import com.porche.addressBook.presentation.Display;
 import com.porche.addressBook.presentation.Handler;
 import com.porche.addressBook.presentation.Input;
 
-
+/**
+ * Handler implementation to handle the add action.
+ */
 public class AddAddressHandler implements Handler {
     
     private String lastName;
