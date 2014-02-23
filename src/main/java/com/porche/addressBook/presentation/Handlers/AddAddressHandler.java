@@ -1,4 +1,4 @@
-package com.porche.addressBook.presentation.Handlers;
+package com.porche.addressBook.presentation.handlers;
 
 import com.porche.addressBook.domain.Address;
 import com.porche.addressBook.domain.AddressBook;
@@ -18,9 +18,9 @@ public class AddAddressHandler implements Handler {
     
     @Override
     public Handler askForParameter(Display display, Input input) {
-        display.askForPersonName();
+        display.showMessage("Please enter last name:");
         lastName = input.getValue();
-        display.askForPhoneNumber();
+        display.showMessage("Please enter phone number:");
         phoneNumber = input.getValue();
         
         return this;

@@ -5,9 +5,9 @@ import java.util.Map;
 
 import com.porche.addressBook.domain.AddressBook;
 import com.porche.addressBook.domain.AddressBookException;
-import com.porche.addressBook.presentation.Handlers.AddAddressHandler;
-import com.porche.addressBook.presentation.Handlers.QuitApplicationHandler;
-import com.porche.addressBook.presentation.Handlers.SearchAddressHandler;
+import com.porche.addressBook.presentation.handlers.AddAddressHandler;
+import com.porche.addressBook.presentation.handlers.QuitApplicationHandler;
+import com.porche.addressBook.presentation.handlers.SearchAddressHandler;
 
 public class ConsoleApplication {
 
@@ -41,8 +41,7 @@ public class ConsoleApplication {
 
     private void validateInstanceState() {
         if (addressBook == null) {
-            throw new IllegalStateException(
-                    "You have to set up addressBook before launch");
+            throw new IllegalStateException("You have to set up addressBook before launch");
         }
     }
     

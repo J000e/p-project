@@ -21,10 +21,10 @@ public class InputHandler {
     }
 
     private Handler getHandler(Display display, Input input) {
-        display.askForCommnadNumber();
+        display.showMessage("Please choose a command:");
         String value = input.getValue();
         while (! handlers.containsKey(value)) {
-            display.showInvalidChooseMessage();
+            display.showMessage("Command not supported, please choose from the list:");
             value = input.getValue();
         }
         

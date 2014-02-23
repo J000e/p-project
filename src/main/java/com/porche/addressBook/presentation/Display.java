@@ -8,16 +8,10 @@ public interface Display {
 
     void showMenu();
 
-    void askForPersonName();
-
-    void askForPhoneNumber();
-
-    void askForCommnadNumber();
-
-    void showInvalidChooseMessage();
-
     void showFoundAddresses(List<Address> find);
 
     void showErrorMessage(String message);
+
+    void showMessage(String message);
 
 }

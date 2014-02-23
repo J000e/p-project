@@ -9,27 +9,15 @@ public class ConsoleDisplay implements Display {
     public void showMenu() {
         System.out.println("Please choose:/n1, Add address/n2, Search address/n3, quit");
     }
-
+    
     @Override
-    public void askForPersonName() {
-        System.out.println("/nPlease enter last name:");
-        
+    public void showMessage(String message) {
+        System.out.println(String.format("/n%s", message));
     }
-
+    
     @Override
-    public void askForPhoneNumber() {
-        System.out.println("/nPlease enter phone number:");
-        
-    }
-
-    @Override
-    public void askForCommnadNumber() {
-        System.out.println("/nPlease choose a command:");
-    }
-
-    @Override
-    public void showInvalidChooseMessage() {
-        System.out.println("/nCommand not supported, please choose from the list:");
+    public void showErrorMessage(String message) {
+        System.out.println(String.format("An unsolvable error raised: %s.", message));
     }
 
     @Override
@@ -45,11 +33,6 @@ public class ConsoleDisplay implements Display {
             }
         }
         
-    }
-
-    @Override
-    public void showErrorMessage(String message) {
-        System.out.println(String.format("An unsolvable error raised: %s.", message));
     }
 
 }

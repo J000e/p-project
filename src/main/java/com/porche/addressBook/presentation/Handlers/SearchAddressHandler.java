@@ -1,4 +1,4 @@
-package com.porche.addressBook.presentation.Handlers;
+package com.porche.addressBook.presentation.handlers;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class SearchAddressHandler implements Handler {
     @Override
     public Handler askForParameter(Display display, Input input) {
         this.display = display;
-        display.askForPersonName();
+        display.showMessage("Please enter last name:");
         lastName = input.getValue();
         
         return this;

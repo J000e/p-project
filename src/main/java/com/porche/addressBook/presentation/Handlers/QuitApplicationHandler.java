@@ -1,4 +1,4 @@
-package com.porche.addressBook.presentation.Handlers;
+package com.porche.addressBook.presentation.handlers;
 
 import com.porche.addressBook.domain.AddressBook;
 import com.porche.addressBook.presentation.Display;
