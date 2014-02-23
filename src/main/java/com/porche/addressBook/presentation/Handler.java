@@ -1,6 +1,6 @@
-package com.porche.addressbook.presentation;
+package com.porche.addressBook.presentation;
 
-import com.porche.addressbook.domain.AddressBook;
+import com.porche.addressBook.domain.AddressBook;
 
 public interface Handler {
 

@@ -1,9 +1,9 @@
-package com.porche.addressbook.presentation;
+package com.porche.addressBook.presentation;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.porche.addressbook.domain.AddressBook;
+import com.porche.addressBook.domain.AddressBook;
 
 public class InputHandler {
     private Map<String, Handler> handlers;

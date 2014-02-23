@@ -1,4 +1,4 @@
-package com.porche.addressbook.presentation;
+package com.porche.addressBook.presentation;
 
 import java.util.Scanner;
 

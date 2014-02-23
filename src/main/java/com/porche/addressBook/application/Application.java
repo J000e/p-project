@@ -1,7 +1,8 @@
-package com.porche.addressbook.application;
+package com.porche.addressBook.application;
 
-import com.porche.addressbook.persistence.FileSystemAddressBook;
-import com.porche.addressbook.presentation.ConsoleApplication;
+import com.porche.addressBook.persistence.FileSystemAddressBook;
+import com.porche.addressBook.presentation.ConsoleApplication;
+
 
 public class Application {
 

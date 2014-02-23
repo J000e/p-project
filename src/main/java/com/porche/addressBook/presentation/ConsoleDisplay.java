@@ -1,8 +1,8 @@
-package com.porche.addressbook.presentation;
+package com.porche.addressBook.presentation;
 
 import java.util.List;
 
-import com.porche.addressbook.domain.Address;
+import com.porche.addressBook.domain.Address;
 
 public class ConsoleDisplay implements Display {
 
@@ -12,7 +12,7 @@ public class ConsoleDisplay implements Display {
     
     @Override
     public void showMessage(String message) {
-        System.out.println(String.format("/n%s", message));
+        System.out.println("\n" + message);
     }
     
     @Override

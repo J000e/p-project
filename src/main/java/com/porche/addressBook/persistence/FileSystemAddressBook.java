@@ -1,4 +1,4 @@
-package com.porche.addressbook.persistence;
+package com.porche.addressBook.persistence;
 
 import java.io.EOFException;
 import java.io.File;
@@ -12,9 +12,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.porche.addressbook.domain.Address;
-import com.porche.addressbook.domain.AddressBook;
-import com.porche.addressbook.domain.AddressBookException;
+import com.porche.addressBook.domain.Address;
+import com.porche.addressBook.domain.AddressBook;
+import com.porche.addressBook.domain.AddressBookException;
 
 public class FileSystemAddressBook implements AddressBook {
 

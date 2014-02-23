@@ -1,4 +1,4 @@
-package com.porche.addressbook.domain;
+package com.porche.addressBook.domain;
 
 import java.io.Serializable;
 
