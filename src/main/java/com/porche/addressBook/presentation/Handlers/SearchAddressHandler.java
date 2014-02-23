@@ -1,12 +1,12 @@
-package com.porche.addressBook.presentation.Handlers;
+package com.porche.addressbook.presentation.handlers;
 
 import java.util.List;
 
-import com.porche.addressBook.domain.Address;
-import com.porche.addressBook.domain.AddressBook;
-import com.porche.addressBook.presentation.Display;
-import com.porche.addressBook.presentation.Handler;
-import com.porche.addressBook.presentation.Input;
+import com.porche.addressbook.domain.Address;
+import com.porche.addressbook.domain.AddressBook;
+import com.porche.addressbook.presentation.Display;
+import com.porche.addressbook.presentation.Handler;
+import com.porche.addressbook.presentation.Input;
 
 public class SearchAddressHandler implements Handler {
 

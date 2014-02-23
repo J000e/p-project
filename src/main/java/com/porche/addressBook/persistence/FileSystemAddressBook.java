@@ -1,5 +1,6 @@
-package com.porche.addressBook.persistence;
+package com.porche.addressbook.persistence;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,9 +12,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.porche.addressBook.domain.Address;
-import com.porche.addressBook.domain.AddressBook;
-import com.porche.addressBook.domain.AddressBookException;
+import com.porche.addressbook.domain.Address;
+import com.porche.addressbook.domain.AddressBook;
+import com.porche.addressbook.domain.AddressBookException;
 
 public class FileSystemAddressBook implements AddressBook {
 
@@ -29,7 +30,7 @@ public class FileSystemAddressBook implements AddressBook {
         File f = new File(setFileName());
         try {
             if(!f.exists()) {
-                createNewFile(f);
+                f.createNewFile();
             }
         } catch (IOException e) {
             throw new AddressBookException("File read or write problem occured", e);
@@ -37,22 +38,13 @@ public class FileSystemAddressBook implements AddressBook {
         return f;
     }
 
-    private void createNewFile(File f) throws IOException {
-        f.createNewFile();
-        List<Address> addresses = new ArrayList<Address>();
-        OutputStream outputStream = new FileOutputStream(f, true);
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-        objectOutputStream.writeObject(addresses);
-        objectOutputStream.close();
-    }
-
     public void add(Address address) {
         try {
-            OutputStream outputStream = new FileOutputStream(file, false);
             List<Address> addresses = readAddressList();
+            OutputStream outputStream = new FileOutputStream(file, false);
             addresses.add(address);
             ObjectOutputStream oos = new ObjectOutputStream(outputStream);
-            oos.writeObject(address);
+            oos.writeObject(addresses);
             oos.close();
         } catch (FileNotFoundException e) {
             throw new AddressBookException("File cant been opened", e);
@@ -74,14 +66,17 @@ public class FileSystemAddressBook implements AddressBook {
     }
 
     private List<Address> readAddressList() {
-        List<Address> addressList = null;        
+        List<Address> addressList = new ArrayList<Address>();        
         
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             addressList = (List<Address>) objectInputStream.readObject();
+            fileInputStream.close();
         } catch (FileNotFoundException e) {
             throw new AddressBookException("File cant been opened", e);
+        } catch (EOFException e) {
+            e.printStackTrace();
         } catch (IOException e) {
                 throw new AddressBookException("File read or write problem occured", e);
         } catch (ClassNotFoundException e) {

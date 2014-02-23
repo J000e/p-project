@@ -1,8 +1,8 @@
-package com.porche.addressBook.presentation;
+package com.porche.addressbook.presentation;
 
 import java.util.List;
 
-import com.porche.addressBook.domain.Address;
+import com.porche.addressbook.domain.Address;
 
 public interface Display {
 

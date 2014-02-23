@@ -1,13 +1,13 @@
-package com.porche.addressBook.presentation;
+package com.porche.addressbook.presentation;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.porche.addressBook.domain.AddressBook;
-import com.porche.addressBook.domain.AddressBookException;
-import com.porche.addressBook.presentation.Handlers.AddAddressHandler;
-import com.porche.addressBook.presentation.Handlers.QuitApplicationHandler;
-import com.porche.addressBook.presentation.Handlers.SearchAddressHandler;
+import com.porche.addressbook.domain.AddressBook;
+import com.porche.addressbook.domain.AddressBookException;
+import com.porche.addressbook.presentation.handlers.AddAddressHandler;
+import com.porche.addressbook.presentation.handlers.QuitApplicationHandler;
+import com.porche.addressbook.presentation.handlers.SearchAddressHandler;
 
 public class ConsoleApplication {
 
