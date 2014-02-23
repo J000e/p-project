@@ -1,7 +1,7 @@
 package com.porche.addressBook.presentation;
 
 public interface Input {
-    boolean isQuit();
+    String getValue();
 
-    Command getCommand();
+    void shutDownInput();
 }

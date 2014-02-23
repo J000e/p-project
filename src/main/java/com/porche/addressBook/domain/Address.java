@@ -1,6 +1,9 @@
 package com.porche.addressBook.domain;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
+    private static final long serialVersionUID = -3955675294752437557L;
     private String lastName;
     private String phoneNumber;
 
@@ -18,5 +21,11 @@ public class Address {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Address [lastName=" + lastName + ", phoneNumber=" + phoneNumber
+                + "]";
     }
 }
