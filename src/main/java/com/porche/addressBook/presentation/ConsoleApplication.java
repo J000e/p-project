@@ -44,10 +44,13 @@ public class ConsoleApplication {
         try {
             runTillQuit();
         } catch (AddressBookException e) {
-            display.showErrorMessage(e.getMessage());
-            e.printStackTrace();
+            display.showErrorMessage(e.getMessage()); //TODO Logging error messages
         }
         input.shutDownInput();
+    }
+    
+    public AddressBook getAddressBook() {
+        return addressBook;
     }
 
     private void validateInstanceState() {

@@ -1,6 +1,5 @@
 package com.porche.addressBook.persistence;
 
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -102,8 +101,6 @@ public class FileSystemAddressBook implements AddressBook {
             fileInputStream.close();
         } catch (FileNotFoundException e) {
             throw new AddressBookException("File cant been opened", e);
-        } catch (EOFException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             throw new AddressBookException("File read or write problem occured", e);
         } catch (ClassNotFoundException e) {

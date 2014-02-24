@@ -11,6 +11,8 @@ import com.porche.addressBook.presentation.Input;
  */
 public class AddAddressHandler implements Handler {
     
+    public static final String ENTER_PHONE_NUMBER_MESSAGE = "Please enter phone number:";
+    public static final String ENTER_LAST_NAME_MESSAGE = "Please enter last name:";
     private String lastName;
     private String phoneNumber;
     
@@ -21,10 +23,10 @@ public class AddAddressHandler implements Handler {
     
     @Override
     public Handler askForParameter(Display display, Input input) {
-        display.showMessage("Please enter last name:");
-        lastName = input.getValue();
-        display.showMessage("Please enter phone number:");
-        phoneNumber = input.getValue();
+        display.showMessage(ENTER_LAST_NAME_MESSAGE);
+        lastName = input.getValue(); //TODO input validation may be usefull
+        display.showMessage(ENTER_PHONE_NUMBER_MESSAGE);
+        phoneNumber = input.getValue(); //TODO input validation may be usefull
         
         return this;
     }
@@ -38,4 +40,11 @@ public class AddAddressHandler implements Handler {
         addressBook.add(address);
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 }

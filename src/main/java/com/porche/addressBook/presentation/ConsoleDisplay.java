@@ -6,8 +6,15 @@ import com.porche.addressBook.domain.Address;
 
 public class ConsoleDisplay implements Display {
 
+    public static final String ADDRESS_DISPLAY_TEMPLATE = "Name: %s - phone number: %s";
+    public static final String ERROR_TEMPLATE = "An unsolvable error raised: %s.";
+    public static final String SEPARATOR = "---------------------------------\n";
+    public static final String ADDRESSES_FOUND = "\nThe following address(es) found:\n";
+    public static final String NO_ADDRESS_FOUND = "\nNo address found with the given lastName";
+    public static final String MENU_CONTENT = "Please choose:\n1, Add address\n2, Search address\n3, Quit";
+
     public void showMenu() {
-        System.out.println("Please choose:\n1, Add address\n2, Search address\n3, Quit");
+        System.out.println(MENU_CONTENT);
     }
     
     @Override
@@ -17,21 +24,21 @@ public class ConsoleDisplay implements Display {
     
     @Override
     public void showErrorMessage(String message) {
-        System.out.println(String.format("An unsolvable error raised: %s.", message));
+        System.out.println(String.format(ERROR_TEMPLATE, message));
     }
 
     @Override
     public void showFoundAddresses(List<Address> foundAddresses) {
         if (foundAddresses.isEmpty()) {
-            System.out.println("\nNo address found with the given lastName");
+            System.out.println(NO_ADDRESS_FOUND);
         } else {
-            System.out.println("\nThe following address(es) found:\n");
+            System.out.println(ADDRESSES_FOUND);
             for (Address address : foundAddresses) {
-                System.out.println(String.format("Name: %s - phone number: %s", 
+                System.out.println(String.format(ADDRESS_DISPLAY_TEMPLATE, 
                         address.getLastName(), 
                         address.getPhoneNumber()));
             }
-            System.out.println("---------------------------------\n");
+            System.out.println(SEPARATOR);
         }
         
     }

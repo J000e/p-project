@@ -14,6 +14,7 @@ import com.porche.addressBook.presentation.Input;
  */
 public class SearchAddressHandler implements Handler {
 
+    public static final String ENTER_LAST_NAME_MESSAGE = "Please enter last name:";
     private String lastName;
     private Display display;
 
@@ -25,7 +26,7 @@ public class SearchAddressHandler implements Handler {
     @Override
     public Handler askForParameter(Display display, Input input) {
         this.display = display;
-        display.showMessage("Please enter last name:");
+        display.showMessage(ENTER_LAST_NAME_MESSAGE);
         lastName = input.getValue();
         
         return this;
@@ -38,5 +39,11 @@ public class SearchAddressHandler implements Handler {
         display.showFoundAddresses(foundAddresses);
     }
 
+    public String getLastName() {
+        return lastName;
+    }
 
+    public Display getDisplay() {
+        return display;
+    }
 }

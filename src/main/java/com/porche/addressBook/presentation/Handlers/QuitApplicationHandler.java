@@ -23,6 +23,4 @@ public class QuitApplicationHandler implements Handler {
     @Override
     public void execute(AddressBook addressBook) {
     }
-
-
 }

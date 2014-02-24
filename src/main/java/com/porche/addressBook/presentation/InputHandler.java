@@ -6,6 +6,8 @@ import java.util.Map;
 import com.porche.addressBook.domain.AddressBook;
 
 public class InputHandler {
+    public static final String COMMAND_NOT_SUPPORTED_MESSAGE = "Command not supported, please choose from the list:";
+    public static final String CHOOSE_A_COMMAND_MESSAGE = "Please choose a command:";
     private Map<String, Handler> handlers;
     
     /**
@@ -32,10 +34,10 @@ public class InputHandler {
     }
 
     private Handler getHandler(Display display, Input input) {
-        display.showMessage("Please choose a command:");
+        display.showMessage(CHOOSE_A_COMMAND_MESSAGE);
         String value = input.getValue();
         while (! handlers.containsKey(value)) {
-            display.showMessage("Command not supported, please choose from the list:");
+            display.showMessage(COMMAND_NOT_SUPPORTED_MESSAGE);
             value = input.getValue();
         }
         
