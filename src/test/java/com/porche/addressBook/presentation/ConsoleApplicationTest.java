@@ -17,13 +17,12 @@ public class ConsoleApplicationTest {
     private AddressBook addressBook;
     @Mock
     private InputHandler inputHandler;
-    @InjectMocks
     private ConsoleApplication underTest;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-//        underTest = new ConsoleApplication();
+        underTest = new ConsoleApplication();
     }
     
     @Test
